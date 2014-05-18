@@ -1,0 +1,24 @@
+{
+  "name": "battery-info",
+  "version": "0.1.0",
+    "authors": [
+    "Hemanth.HM <hemanth.hm@gmail.com>"
+  ],
+  "description": "Custom Polymer element for displaying battery info.",
+  "keywords": "web-components, battery, info, ploymer",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "http://h3manth.com/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#master",
+    "polymer-jsonp": "Polymer/polymer-jsonp#~0.2.3"
+  }
+}

@@ -1,0 +1,67 @@
+<link rel="import" href="../polymer/polymer.html">
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+<!--
+Custom Polymer element for displaying battery info.
+
+##### Example
+
+    <battery-status></battery-status>
+
+@element battery-status
+@blurb Custom Polymer element for displaying battery info.
+@status stable
+@homepage http://github.com/hemanth/battery-status
+-->
+<polymer-element name="battery-status">
+
+  <template>
+
+    <link href="battery-status.css" rel="stylesheet" />
+      <div id="info">
+        {{battery.level}}
+        {{battery.status}}
+      </div>
+  </template>
+
+  <script>
+
+      Polymer('battery-status', {
+         ready: function() { 
+              var battery = navigator.battery || navigator.webkitBattery || navigator.mozBattery;
+              if(battery){
+                this.battery = {}
+                this.battery.level = parseInt(battery.level * 100) + '%';
+                this.battery.status = battery.charging ? "charging" : "discharging";
+
+                var checkBattery = function() {
+                  if(battery.charging){
+                    this.$.info.classList.remove('is-disCharging');              
+                    this.$.info.classList.add('is-charging');
+                    this.battery.status = "charging";
+                  } else {
+                      this.$.info.classList.remove('is-charging');
+                      this.$.info.classList.add('is-disCharging');
+                      this.battery.status = "discharging";              
+                  }
+                }.bind(this);
+
+                battery.addEventListener('levelchange', function() {
+                    this.battery.level = parseInt(battery.level * 100) + '%';
+                  }.bind(this), false);
+
+                battery.addEventListener('chargingchange', function() {
+                    console.log("chargingchange");
+                    checkBattery();
+                  }.bind(this), false);
+
+                checkBattery();
+
+             } else {
+                this.$.info.innerHTML = "Battery API not supported :("
+             }
+          }
+      });
+  </script>
+
+</polymer-element>

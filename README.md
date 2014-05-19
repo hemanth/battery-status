@@ -1,4 +1,4 @@
-battery-info element
+battery-status element
 ================
 
 ![](./bi.gif)

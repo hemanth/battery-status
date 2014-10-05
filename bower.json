@@ -5,7 +5,12 @@
     "Hemanth.HM <hemanth.hm@gmail.com>"
   ],
   "description": "Custom Polymer element for displaying battery info.",
-  "keywords": "web-components, battery, info, ploymer",
+  "keywords": [
+    "web-components", 
+    "battery", 
+    "info", 
+    "ploymer"
+  ],
   "main": "index.html",
   "license": "MIT",
   "homepage": "http://h3manth.com/",
